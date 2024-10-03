@@ -329,7 +329,7 @@ function print_sub_menu_entry($menu_array)
 
 	if ($num > 0) {
 		print '<ul>';
-
+        $lastlevel = 0;
 
 		for ($i = 0; $i < $num; $i++) {     // Loop on each menu entry
 			$showmenu = true;
@@ -602,8 +602,8 @@ function get_sub_menu($db, $mainmenu, $leftmenu, $tabMenu)
 	//var_dump($menu_array_before);exit;
 	//var_dump($menu_array_after);exit;
 	$menu_array = $newmenu->liste;
-	if (is_array($menu_array_before)) $menu_array = array_merge($menu_array_before, $menu_array);
-	if (is_array($menu_array_after))  $menu_array = array_merge($menu_array, $menu_array_after);
+	if (isset($menu_array_before) && is_array($menu_array_before)) $menu_array = array_merge($menu_array_before, $menu_array);
+	if (isset($menu_array_after) && is_array($menu_array_after))  $menu_array = array_merge($menu_array, $menu_array_after);
 
 	if (!is_array($menu_array) || empty($menu_array)) return 0;
 	else return $menu_array;
