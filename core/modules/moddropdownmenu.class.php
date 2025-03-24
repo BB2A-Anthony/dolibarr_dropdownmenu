@@ -93,8 +93,8 @@ class modDropDownMenu extends DolibarrModules
         }
 
 		$this->fileNameMenuHandler = 'dropdown_responsive_menu.php';
-		$this->fileNameMenuHandlerLib = 'dropdown_responsive_menu.lib.php';		
-		
+		$this->fileNameMenuHandlerLib = 'dropdown_responsive_menu.lib.php';
+
         $this->const = array(
 			1=>array('MAIN_MENU_STANDARD_FORCED','chaine',$this->fileNameMenuHandler,'Force menu handler to this value',1,'current',1),
 			2=>array('MAIN_MENUFRONT_STANDARD_FORCED','chaine',$this->fileNameMenuHandler,'Force menu handler to this value',1,'current',1),
@@ -103,7 +103,7 @@ class modDropDownMenu extends DolibarrModules
 			5=>array('MAIN_HIDE_LEFT_MENU','chaine','1','Hide left menu',1,'current',1),
 			6=>array('MAIN_USE_TOP_MENU_SEARCH_DROPDOWN','chaine','1','Show search',1,'current',1),
         );
-		
+
     }
 
     /**
@@ -121,14 +121,14 @@ class modDropDownMenu extends DolibarrModules
         $result = $this->_load_tables('/dropdownmenu/sql/');
         if ($result < 0) return -1; // Do not activate module if error 'not allowed' returned when loading module SQL queries (the _load_table run sql with run_sql with the error allowed parameter set to 'default')
 
-		
+
 		$PathSrc = __DIR__ . '/files/';
 		$PathDst = DOL_DOCUMENT_ROOT.'/core/menus/standard/';
-		
+
 		copy($PathSrc.$this->fileNameMenuHandler, $PathDst.$this->fileNameMenuHandler);
-		
+
 		copy($PathSrc.$this->fileNameMenuHandlerLib, $PathDst.$this->fileNameMenuHandlerLib);
-		
+
 
         // Permissions
         $this->remove($options);
